@@ -168,3 +168,18 @@ def most_points_scored
   all_players.max_by{ |pl| pl[:points] }[:player_name]
 end
 
+def total_points(team)
+  team[:players].reduce(0){ |memo, pl| memo + pl[:points] }
+end
+
+def winning_team
+  teams.max_by{ |t| total_points(t) }[:team_name]
+end
+
+def player_with_longest_name
+  all_players.max_by{ |pl| pl[:player_name].length }[:player_name]
+end
+
+def long_name_steals_a_ton?
+  player_with_longest_name == all_players.max_by{ |pl| pl[:steals]}[:player_name]
+end
