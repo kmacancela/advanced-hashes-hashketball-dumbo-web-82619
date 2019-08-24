@@ -135,7 +135,13 @@ def shoe_size(name)
   find_player(name)[:shoe]
 end
 
+def find_team_by_name(team_name)
+  teams.find{ |t| t[:team_name] == team_name }
+end
 
+def team_colors(team_name)
+  find_team_by_name(team_name)[:colors]
+end
 
 
 
