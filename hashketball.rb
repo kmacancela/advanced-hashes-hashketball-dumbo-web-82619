@@ -123,6 +123,10 @@ def all_players
   teams.reduce([]){ |memo, t|  memo << t[:players] }.flatten
 end
 
+def find_player(name)
+  all_players.find{ |p| p[:player_name] == name }
+end
+
 def num_points_scored(name)
   find_player(name)[:points]
 end
