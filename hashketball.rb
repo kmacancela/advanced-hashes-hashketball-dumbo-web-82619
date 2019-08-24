@@ -114,6 +114,14 @@ require "pry"
      }
    }
  end
+ 
+def teams
+  game_hash.keys.reduce([]){ |memo, k|  memo << game_hash[k] }
+end
+
+def all_players
+  teams.reduce([]){ |memo, t|  memo << t[:players] }.flatten
+end
 
 def num_points_scored(name)
   find_player(name)[:points]
