@@ -143,7 +143,26 @@ def team_colors(team_name)
   find_team_by_name(team_name)[:colors]
 end
 
+def team_names
+  teams.map{ |t| t[:team_name] }
+end
 
+def player_numbers(tn)
+  find_team_by_name(tn)[:players].reduce([]) do |memo, pl|
+    memo << pl[:number]
+    memo
+  end
+end
+
+def player_stats(name)
+  temp = find_player(name).dup
+  temp.delete(:player_name)
+  temp
+end
+
+def big_shoe_rebounds
+  all_players.max_by{ |p| p[:shoe] }[:rebounds]
+end
 
 
 
